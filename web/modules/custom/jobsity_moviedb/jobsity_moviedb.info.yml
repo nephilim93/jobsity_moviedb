@@ -1,0 +1,6 @@
+name: 'Jobsity MovieDB'
+type: module
+description: 'Jobsity MovieDB Integration'
+package: Jobsity
+core: 8.x
+core_version_requirement: ^8 || ^9

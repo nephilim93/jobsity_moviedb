@@ -1,0 +1,4 @@
+services:
+  jobsity_moviedb.movie_service:
+    class: Drupal\jobsity_moviedb\MovieService
+    arguments: ['@http_client_factory', '@settings']

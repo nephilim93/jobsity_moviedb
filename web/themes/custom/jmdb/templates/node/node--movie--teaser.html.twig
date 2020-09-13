@@ -1,0 +1,22 @@
+<div class="movie--teaser teaser">
+  <div class="movie--cover cover">
+    {{ content.field_image }}
+  </div>
+  <div class="movie--title title">
+    <h2>
+      <a href="{{ url }}" rel="bookmark">{{ label }}</a>
+    </h2>
+  </div>
+  <div class="movie--year year">
+    {{ date.year }}
+  </div>
+  <div class="movie--month month">
+    {{ date.month }}
+  </div>
+  <div class="movie--genre genres">
+    {{ content.field_genre }}
+  </div>
+  <div class="movie--link link">
+    <a href="{{ url }}">More info about this movie</a>
+  </div>
+</div>

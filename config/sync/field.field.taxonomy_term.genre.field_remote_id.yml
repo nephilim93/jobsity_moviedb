@@ -1,0 +1,23 @@
+uuid: 70c80392-b9bf-4ef9-9381-d8520670f2b5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_remote_id
+    - taxonomy.vocabulary.genre
+id: taxonomy_term.genre.field_remote_id
+field_name: field_remote_id
+entity_type: taxonomy_term
+bundle: genre
+label: 'Remote ID'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

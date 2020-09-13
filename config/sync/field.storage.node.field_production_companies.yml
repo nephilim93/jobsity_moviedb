@@ -1,0 +1,21 @@
+uuid: f840d05d-7cfb-42d5-8329-51187ea3002a
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_production_companies
+field_name: field_production_companies
+entity_type: node
+type: string
+settings:
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

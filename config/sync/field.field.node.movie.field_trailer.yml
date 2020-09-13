@@ -1,0 +1,19 @@
+uuid: 6d82f26f-4e79-4ad2-a002-6247571133ca
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_trailer
+    - node.type.movie
+id: node.movie.field_trailer
+field_name: field_trailer
+entity_type: node
+bundle: movie
+label: Trailer
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

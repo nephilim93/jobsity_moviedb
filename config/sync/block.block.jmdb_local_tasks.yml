@@ -1,0 +1,22 @@
+uuid: de20ef32-9cd5-49bb-9352-590d54c46893
+langcode: en
+status: true
+dependencies:
+  theme:
+    - jmdb
+_core:
+  default_config_hash: X9I1OB0W3WlWtrK-CNcg6hNWwa8wficanpH8pYnDZDE
+id: jmdb_local_tasks
+theme: jmdb
+region: content
+weight: -2
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: Tabs
+  provider: core
+  label_display: '0'
+  primary: true
+  secondary: true
+visibility: {  }

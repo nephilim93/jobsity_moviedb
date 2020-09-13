@@ -1,0 +1,10 @@
+uuid: ada23003-1d52-4973-836e-d7ee9da17ee3
+langcode: en
+status: true
+dependencies:
+  module:
+    - block
+id: block.token
+label: Token
+targetEntityType: block
+cache: true

@@ -1,0 +1,153 @@
+<?php
+
+use Drupal\taxonomy\Entity\Term;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
+
+/**
+ * @file
+ * Jobsity Movie DB Integration module.
+ */
+
+/**
+ * Implements hook_node_view().
+ */
+function jobsity_moviedb_node_view(array &$build, EntityInterface $entity, EntityViewDisplayInterface $display, $view_mode) {
+
+  if($view_mode == 'full' && $entity->bundle() == 'movie') {
+    // Call Movie Service.
+    $moviedb = \Drupal::service('jobsity_moviedb.movie_service');
+
+    // Get movie remote ID.
+    $remote_id = $entity->get('field_remote_id')->first()->getValue();
+    $movie = $moviedb->searchTMDB('movie/' . $remote_id['value'], 'videos,credits,reviews');
+
+    // @TODO: Search for multiple Artists at once.
+    foreach($movie['credits']['cast'] as $artist) {
+      $query = \Drupal::entityQuery('node');
+      $query->condition('type', 'artist');
+      $query->condition('field_remote_id', $artist['id']);
+      $result = $query->execute();
+      
+      $nid = reset($result);
+      if(!$nid) {
+        $new_artist = $moviedb->searchTMDB('person/' . $artist['id'], 'credits');
+        $new_nid = $moviedb->createArtist($new_artist);
+        $entity->get('field_cast')->appendItem(['target_id' => $new_nid]);
+      }
+      else {
+        // Create array of existing ids in field.
+        $existing_ids = array_column($entity->get('field_cast')->getValue(), 'target_id');
+        if (!in_array($nid, $existing_ids)) {
+          $entity->get('field_cast')->appendItem(['target_id' => $nid]);
+        }
+      }
+    }
+    $entity->save();
+    $build['field_cast'] = $entity->get('field_cast')->view('full');
+  }
+  else if($view_mode == 'full' && $entity->bundle() == 'artist') {
+    // Call Movie Service.
+    $moviedb = \Drupal::service('jobsity_moviedb.movie_service');
+
+    // Get movie remote ID.
+    $remote_id = $entity->get('field_remote_id')->first()->getValue();
+    $artist = $moviedb->searchTMDB('person/' . $remote_id['value'], 'credits');
+
+    $artist_movies = $artist['credits']['cast'];
+
+    // Limit to 10 per artist.
+    if(count($artist_movies) > 10) {
+      $artist_movies = array_slice($artist_movies, 0, 10);
+    }
+
+    // @TODO: Search for multiple Artists at once.
+    foreach($artist_movies as $movie) {
+      $query = \Drupal::entityQuery('node');
+      $query->condition('type', 'movie');
+      $query->condition('field_remote_id', $artist['id']);
+      $result = $query->execute();
+      
+      $nid = reset($result);
+      if(!$nid) {
+        $new_movie = $moviedb->searchTMDB('movie/' . $movie['id'], 'videos,credits,reviews');
+        $new_nid = $moviedb->createMovie($new_movie);
+        $entity->get('field_actor_movies')->appendItem(['target_id' => $new_nid]);
+      }
+      else {
+        // Create array of existing ids in field.
+        $existing_ids = array_column($entity->get('field_actor_movies')->getValue(), 'target_id');
+        if (!in_array($nid, $existing_ids)) {
+          $entity->get('field_actor_movies')->appendItem(['target_id' => $nid]);
+        }
+      }
+    }
+    $entity->save();
+    $build['field_actor_movies'] = $entity->get('field_actor_movies')->view('full');
+  }
+}
+
+/**
+ * Implements hook_install().
+ */
+function jobsity_moviedb_install() {
+  // Call Movie Service.
+  $moviedb = \Drupal::service('jobsity_moviedb.movie_service');
+
+  // Generate Taxonomy Terms
+  $genres = $moviedb->searchTMDB('genre/movie/list');
+  foreach($genres['genres'] as $genre) {
+    $query = \Drupal::entityQuery('taxonomy_term');
+    $query->condition('vid', "genre");
+    $query->condition('name', $genre['name']);
+    $tids = $query->execute();
+    if(count($tids) == 0) {
+      $term = Term::create([
+        'vid' => 'genre',
+        'name' => $genre['name'],
+        'field_remote_id' => $genre['id'],
+      ]);
+      $term->enforceIsNew();
+      $term->save();
+    }
+  }
+
+  // Gather Initial Movie Content.
+  $movies = [];
+  // Get upcoming movies.
+  $upcoming = $moviedb->searchTMDB('movie/upcoming');
+  foreach($upcoming['results'] as $movie) {
+    $movies[] = $movie['id'];
+  }
+  
+  // Gather Initial Artist Content.
+  $artists = [];
+  // Get most popular artists.
+  $popular = $moviedb->searchTMDB('person/popular');
+  foreach($popular['results'] as $artist) {
+    if ($artist['known_for_department'] == 'Acting') {
+      $artists[] = $artist['id'];
+    }
+  }
+  // @TODO: Make calls more efficient. No support to retrieve multiple IDs.
+  // See: https://trello.com/c/lu5lFkB6/14-allow-querying-multiple-ids-at-once
+  foreach($movies as $movie_id) {
+    $movie = $moviedb->searchTMDB('movie/' . $movie_id, 'videos,credits,reviews');
+    $moviedb->createMovie($movie);
+  }
+
+  foreach($artists as $artist_id) {
+    $artist = $moviedb->searchTMDB('person/' . $artist_id, 'credits');
+    $moviedb->createArtist($artist);
+  }
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function jobsity_moviedb_form_alter(&$form, &$form_state, $form_id) {
+  if ($form_id == 'search_block_form') {
+    $form['keys']['#attributes']['placeholder'] = t('Search for movie or actor');
+    $form['actions']['submit']['#value'] = t('Find');
+  }
+}

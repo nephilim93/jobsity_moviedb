@@ -1,0 +1,71 @@
+uuid: 653be317-6eed-4a4d-97d4-8825a8994792
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.movie.field_alternative_titles
+    - field.field.node.movie.field_cast
+    - field.field.node.movie.field_genre
+    - field.field.node.movie.field_image
+    - field.field.node.movie.field_original_language
+    - field.field.node.movie.field_overview
+    - field.field.node.movie.field_popularity
+    - field.field.node.movie.field_production_companies
+    - field.field.node.movie.field_related_movies
+    - field.field.node.movie.field_release_date
+    - field.field.node.movie.field_remote_id
+    - field.field.node.movie.field_reviews
+    - field.field.node.movie.field_trailer
+    - node.type.movie
+  module:
+    - datetime
+    - image
+    - user
+id: node.movie.teaser
+targetEntityType: node
+bundle: movie
+mode: teaser
+content:
+  field_genre:
+    type: entity_reference_label
+    weight: 2
+    region: content
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+  field_image:
+    type: image
+    weight: 0
+    region: content
+    label: hidden
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+  field_release_date:
+    type: datetime_default
+    weight: 1
+    region: content
+    label: hidden
+    settings:
+      timezone_override: ''
+      format_type: html_month
+    third_party_settings: {  }
+  links:
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  field_alternative_titles: true
+  field_cast: true
+  field_original_language: true
+  field_overview: true
+  field_popularity: true
+  field_production_companies: true
+  field_related_movies: true
+  field_remote_id: true
+  field_reviews: true
+  field_trailer: true

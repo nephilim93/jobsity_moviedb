@@ -1,0 +1,14 @@
+uuid: 244651da-12f8-4bbd-9267-1cc89c6d6416
+langcode: en
+status: true
+dependencies:
+  module:
+    - taxonomy
+id: movie_link
+label: 'Movie Link'
+type: 'canonical_entities:taxonomy_term'
+pattern: '/movies/[term:name]'
+selection_criteria: {  }
+selection_logic: and
+weight: 0
+relationships: {  }

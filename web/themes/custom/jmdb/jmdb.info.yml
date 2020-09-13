@@ -1,0 +1,15 @@
+name: Jobsity Movie DB
+type: theme
+description: This is the Jobsity Movide DB theme
+core: 8.x
+core_version_requirement: ^8 || ^9
+# Defines the base theme
+base theme: stable
+# Defines libraries group in which we can add css/js.
+libraries:
+  - jmdb/global-styling
+# Regions
+regions:
+  header: Header
+  content: Content
+  footer: Footer

@@ -1,0 +1,28 @@
+uuid: 19064ef0-8124-4110-893d-52eeac48a216
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_cast
+    - node.type.artist
+    - node.type.movie
+id: node.movie.field_cast
+field_name: field_cast
+entity_type: node
+bundle: movie
+label: Cast
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      artist: artist
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference
