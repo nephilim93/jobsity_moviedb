@@ -26,6 +26,14 @@ function jmdb_preprocess_node__movie(&$variables) {
       $variables['date']['month'] = date('F', strtotime($date_ISO));
     }
   }
+  else if(in_array($variables['view_mode'], ['full'])) {
+    // TODO: Implement using Oembed.
+    if(!$node->get('field_trailer')->isEmpty()) {
+      $video_data_string = $node->get('field_trailer')->first()->getValue();
+      $video_data = explode('|', $video_data_string['value']);
+      $variables['video_id'] = $video_data[0];
+    }
+  }
 }
 
 /*

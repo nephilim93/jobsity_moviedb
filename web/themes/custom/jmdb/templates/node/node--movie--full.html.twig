@@ -1,0 +1,40 @@
+<div class="movie--full full">
+  <div class="movie--trailer trailer">
+    <iframe 
+      width="560" 
+      height="315" 
+      src="https://www.youtube.com/embed/{{ video_id }}" 
+      frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+      allowfullscreen></iframe>
+  </div>
+  <div class="movie--cover cover">
+    {{ content.field_image }}
+  </div>
+  <div class="movie--genre genres">
+    {{ content.field_genre }}
+  </div>
+  <div class="movie--titles titles">
+    {{ content.field_alternative_titles }}
+  </div>
+  <div class="movie--overview overview">
+    {{ content.field_overview }}
+  </div>
+  <div class="movie--production-companies production-companies">
+    {{ content.field_production_companies }}
+  </div>
+  <div class="movie--date date">
+    {{ content.field_release_date }}
+  </div>
+  <div class="movie--original-language original-language">
+    {{ content.field_original_language }}
+  </div>
+  <div class="movie--cast cast">
+    {{ content.field_cast }}
+  </div>
+  <div class="movie--popularity popularity">
+    {{ content.field_popularity }}
+  </div>
+  <div class="movie--reviews reviews">
+    {{ content.field_reviews }}
+  </div>
+</div>
