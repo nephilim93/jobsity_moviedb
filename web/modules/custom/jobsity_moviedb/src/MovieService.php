@@ -11,7 +11,7 @@ use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\ContentEntityInterface;
 
 /**
- * Class FeedsClient.
+ * Class MovieService.
  *
  * @package Drupal\jobsity_moviedb
  */
@@ -31,7 +31,7 @@ class MovieService {
   protected $settings;
 
   /**
-   * FeedsClient constructor.
+   * MovieService constructor.
    *
    * @param \Drupal\Core\Http\ClientFactory $http_client_factory
    *   The client factory interface.
@@ -49,8 +49,8 @@ class MovieService {
    *
    * @param string $search_category
    *   The category to search.
-   * @param string $append_to_response
-   *   The additional fields to search for.
+   * @param string $params
+   *   The append_to_response fields to search for.
    * @param int $page
    *   The page to search for.
    *
@@ -82,7 +82,15 @@ class MovieService {
     }
   }
 
-
+  /**
+   * Create a Movie node in the DB.
+   *
+   * @param array $movie
+   *   The movie to insert.
+   *
+   * @return string
+   *   The movie ID.
+   */
   public function createMovie($movie = []) {
     $configuration = self::searchTMDB('configuration');
   
@@ -156,6 +164,15 @@ class MovieService {
     return $node->id();
   }
 
+  /**
+   * Create an Artist node in the DB.
+   *
+   * @param array $artist
+   *   The artist to insert.
+   *
+   * @return string
+   *   The artist ID.
+   */
   public function createArtist($artist = []) {
     $configuration = self::searchTMDB('configuration');
   
