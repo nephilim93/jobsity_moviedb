@@ -8,17 +8,11 @@ This Repository contains a Drupal 9 site that feeds on [themoviedb.org](http://t
 - Clone this repository.
 - Run composer install from the repository root folder.
 - Adjust your webserver and domain settings on your host machine.
-- Adjust your database settings using "/sites/default/settings.php".
-- Add a Hash Salt to settings.php
-- Add the config_sync_directory variable to your settings.php like this: $settings['config_sync_directory'] =  '.\./config/sync';
-- Run drush site:install --existing-config from the docroot.
+- Adjust your database settings using the "/sites/default/settings.php" file.
+- Add the hash_salt variable to settings.php
+- Add the config_sync_directory variable to settings.php like. It should look like this:
+	- $settings['config_sync_directory'] =  '.\./config/sync';
+- Run "drush site:install jobsity" from the web folder.
+- Enable the custom jobsity_moviedb module "drush pm-enable
 - Visit your newly created site.  
-- You're all done!  
-  
-## Content  
-  
-I approached the content issue by feeding the site on demand. This means I fetched the most popular movies and actors first, but as soon as you browse through them, more content will become available.  
-  
-## Efficiency  
-  
-This is by no means a final version of the code. Left TODO's in some functions.
+- You're all done!
