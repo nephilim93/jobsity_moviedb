@@ -1,0 +1,28 @@
+body {
+  font-size: 12px;
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+.region-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.l-grid {
+  display: grid;
+  grid-column-gap: 1rem;
+  grid-row-gap: 1rem;
+}
+
+@media screen and (min-width: 768px) {
+  .l-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .l-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
