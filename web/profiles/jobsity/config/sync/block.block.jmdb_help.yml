@@ -1,0 +1,22 @@
+uuid: 7768d147-8bb8-468e-8d98-52d4ae097847
+langcode: en
+status: true
+dependencies:
+  module:
+    - help
+  theme:
+    - jmdb
+_core:
+  default_config_hash: 8I8iACSa0sKO3k3jlvUG1ge52rfcKX7USJAQYnzuBgg
+id: jmdb_help
+theme: jmdb
+region: content
+weight: -1
+provider: null
+plugin: help_block
+settings:
+  id: help_block
+  label: Help
+  provider: help
+  label_display: '0'
+visibility: {  }

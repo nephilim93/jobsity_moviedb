@@ -1,0 +1,19 @@
+uuid: 03eef201-a67f-4d34-bc2e-cf5639d6bd47
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_place_of_birth
+    - node.type.artist
+id: node.artist.field_place_of_birth
+field_name: field_place_of_birth
+entity_type: node
+bundle: artist
+label: 'Place of Birth'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

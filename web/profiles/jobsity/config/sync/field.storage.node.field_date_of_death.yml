@@ -1,0 +1,20 @@
+uuid: de79ea52-b9ac-49b1-bf83-3e885ce853a9
+langcode: en
+status: true
+dependencies:
+  module:
+    - datetime
+    - node
+id: node.field_date_of_death
+field_name: field_date_of_death
+entity_type: node
+type: datetime
+settings:
+  datetime_type: date
+module: datetime
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

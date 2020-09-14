@@ -1,0 +1,124 @@
+uuid: 049e1486-19d8-4f76-97d5-9f945482420a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.artist.field_actor_movies
+    - field.field.node.artist.field_bio
+    - field.field.node.artist.field_date_of_birth
+    - field.field.node.artist.field_date_of_death
+    - field.field.node.artist.field_gallery
+    - field.field.node.artist.field_image
+    - field.field.node.artist.field_place_of_birth
+    - field.field.node.artist.field_popularity
+    - field.field.node.artist.field_remote_id
+    - field.field.node.artist.field_website
+    - node.type.artist
+  module:
+    - datetime
+    - image
+    - link
+    - text
+    - user
+id: node.artist.default
+targetEntityType: node
+bundle: artist
+mode: default
+content:
+  field_actor_movies:
+    weight: 112
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_bio:
+    weight: 108
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_date_of_birth:
+    weight: 103
+    label: hidden
+    settings:
+      timezone_override: ''
+      format_type: html_date
+    third_party_settings: {  }
+    type: datetime_default
+    region: content
+  field_date_of_death:
+    weight: 105
+    label: hidden
+    settings:
+      timezone_override: ''
+      format_type: html_date
+    third_party_settings: {  }
+    type: datetime_default
+    region: content
+  field_gallery:
+    weight: 109
+    label: hidden
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+    region: content
+  field_image:
+    weight: 102
+    label: hidden
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+    region: content
+  field_place_of_birth:
+    weight: 104
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_popularity:
+    weight: 107
+    label: hidden
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_decimal
+    region: content
+  field_remote_id:
+    weight: 111
+    label: hidden
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_integer
+    region: content
+  field_website:
+    weight: 106
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: content
+  links:
+    weight: 100
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }

@@ -1,0 +1,23 @@
+uuid: 7722442b-efb6-4a83-b6dc-ab0ba5ec4265
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_remote_id
+    - node.type.movie
+id: node.movie.field_remote_id
+field_name: field_remote_id
+entity_type: node
+bundle: movie
+label: 'Remote ID'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

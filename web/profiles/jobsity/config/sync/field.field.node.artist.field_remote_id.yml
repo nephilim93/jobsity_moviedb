@@ -1,0 +1,23 @@
+uuid: 64a8226c-3a4b-431c-9ff6-9b004ae995cc
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_remote_id
+    - node.type.artist
+id: node.artist.field_remote_id
+field_name: field_remote_id
+entity_type: node
+bundle: artist
+label: 'Remote ID'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

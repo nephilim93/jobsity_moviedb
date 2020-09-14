@@ -1,0 +1,49 @@
+uuid: e1289d55-6d47-4c1c-b038-9e83ad9ed652
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.artist.field_actor_movies
+    - field.field.node.artist.field_bio
+    - field.field.node.artist.field_date_of_birth
+    - field.field.node.artist.field_date_of_death
+    - field.field.node.artist.field_gallery
+    - field.field.node.artist.field_image
+    - field.field.node.artist.field_place_of_birth
+    - field.field.node.artist.field_popularity
+    - field.field.node.artist.field_remote_id
+    - field.field.node.artist.field_website
+    - node.type.artist
+  module:
+    - image
+    - user
+id: node.artist.teaser
+targetEntityType: node
+bundle: artist
+mode: teaser
+content:
+  field_image:
+    type: image
+    weight: 0
+    region: content
+    label: hidden
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+  links:
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  field_actor_movies: true
+  field_bio: true
+  field_date_of_birth: true
+  field_date_of_death: true
+  field_gallery: true
+  field_place_of_birth: true
+  field_popularity: true
+  field_remote_id: true
+  field_website: true
