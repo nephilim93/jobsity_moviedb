@@ -13,6 +13,8 @@ This Repository contains a Drupal 9 site that feeds on [themoviedb.org](http://t
 - Add the config_sync_directory variable to settings.php. It should look like this:
 	- $settings['config_sync_directory'] =  '.\./config/sync';
 - Run "drush site:install jobsity" from the web folder.
-- Enable the custom jobsity_moviedb module "drush pm-enable
-- Visit your newly created site.  
-- You're all done!
+- Enable the custom jobsity_moviedb module "drush pm-enable jobsity_moviedb".
+- Visit your newly created site, and Browse it!
+- The Path to the Movie listings is: "/movies".
+- The Path to the Artist listings is: "/artists".
+- Enjoy!
