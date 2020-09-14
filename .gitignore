@@ -53,7 +53,6 @@ web/web.config
 
 web/themes/custom/*/node_modules
 web/themes/custom/*/*/node_modules
-web/themes/custom/*/css
 web/themes/custom/*/components/*/css
 web/themes/custom/*/components/public
 # This distinction is only important when using this
