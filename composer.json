@@ -63,6 +63,11 @@
                 "type:drupal-custom-theme"
             ]
         },
+        "patches": {
+            "drupal/core": {
+                "Allow an install hook in profiles installing from configuration": "https://www.drupal.org/files/issues/2020-05-12/2982052-51.patch"
+            }
+        },
         "drupal-core-project-message": {
             "include-keys": [
                 "homepage",
