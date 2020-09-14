@@ -10,7 +10,7 @@ This Repository contains a Drupal 9 site that feeds on [themoviedb.org](http://t
 - Adjust your webserver and domain settings on your host machine.
 - Adjust your database settings using the "/sites/default/settings.php" file.
 - Add the hash_salt variable to settings.php
-- Add the config_sync_directory variable to settings.php like. It should look like this:
+- Add the config_sync_directory variable to settings.php. It should look like this:
 	- $settings['config_sync_directory'] =  '.\./config/sync';
 - Run "drush site:install jobsity" from the web folder.
 - Enable the custom jobsity_moviedb module "drush pm-enable
