@@ -16,5 +16,5 @@ This Repository contains a Drupal 9 site that feeds on [themoviedb.org](http://t
 - Enable the custom jobsity_moviedb module "drush pm-enable jobsity_moviedb".
 - Visit your newly created site, and Browse it!
 - The Path to the Movie listings is: "/movies".
-- The Path to the Artist listings is: "/artists".
+- The Path to the Artist listings is: "/actors".
 - Enjoy!
