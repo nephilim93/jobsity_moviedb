@@ -1,4 +1,4 @@
-# Jobsity MovieDB Challenge  
+# MovieDB Challenge  
   
 Hi!  
 This Repository contains a Drupal 9 site that feeds on [themoviedb.org](http://themoviedb.org/) API to display Movies, Artists and relationships between them.  
